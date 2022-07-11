@@ -21,6 +21,11 @@ function Banner() {
 
   console.log(movie);
 
+  // this function will limit the text shown on the description once it has reached 150 characters, look at line 49
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
+
   return (
     <header
       className="banner"
@@ -40,12 +45,11 @@ function Banner() {
           <button className="banner__button">Play</button>
           <button className="banner__button">My List</button>
         </div>
-        <h1 className="banner__description">{movie?.overview}</h1>
+        <h1 className="banner__description">
+          {truncate(movie?.overview, 150)}
+        </h1>
       </div>
-      {/** Background Image */}
-      {/** title */}
-      {/** Div > 2 buttons */}
-      {/** Description */}
+      <div className="banner--fadeBottom" />
     </header>
   );
 }
